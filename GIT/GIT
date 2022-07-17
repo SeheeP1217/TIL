@@ -1,0 +1,159 @@
+### **git** = 분산 버전 관리 프로그램
+
+1. 코드의 히스토리 관리
+2. 개발되어온 과정 파악 가능
+3. 이전 버전과의 변경 사항 비교 및 분석
+
++)버전관리프로그램  - 컴퓨터 소프트웨어의 특정 상태들을 관리하는 것
+
++)버전 - 컴퓨터 소프트웨어의 특정 상태
+
++)분산 - (↔중앙집중) ex) 블록체인.  내용을 분산하여 저장 및 보관→보관, 복구 쉬움
+
+### **github** = git을 저장하는 서비스 (ex. gitlab, github, bitbucket)
+
+### **gitlab**(저장 서버 자체를 마음대로 구축 가능) **vs github**(마이크로소프트)
+
+⇒ Git <> GitHub
+
+### **github의 장점**
+
+1. 열정, 성실함 표현 가능 (그동안의 기록을 남겨서)
+2. 잔디밭 관리 해야함(하루 한칸, 매일 commit 한개 해야 초록색, 진한 건 다른 날에 비해 더 많이) → 성실함- 1일 1commit
+3. social coding: 플랫폼이 커짐에 따라 개발자 팀이 필요 팀끼리 각자의 코딩을 공유
+4. == 내 코드를 이용한 SNS
+
+### **CLI(Command Line Interface)** 명령어를 통해 사용자와 컴퓨터가 상호작용하는 방식
+
+1. ↔GUI(Graphic User Interface) 그래픽을 통해 사용자와 컴퓨터가 상호작용하는 방식
+2. 컴퓨터 리소스 절약 가능
+3. 그래픽으로 다 보여줄 수 없는 부분을  CLI는 해결 가능
+4. 기본적인 명령어
+    1. touch: 파일을 생성하는 명령어
+    2. Mkdir: 새 폴더를 생성하는 명령어
+    3. ls: 현재 작업 중인 디렉토리의 폴더/파일 목록을 보여주는 명령어
+    4. cd:  현재 작업 중인 디렉토리를 변경하는 명령어
+    5. start, open: 폴더/파일을 여는 명령어(start는 windows/open은 mac)
+    6. rm: 파일을 삭제하는 명령어, -r 옵션을 주면 폴더 삭제 가능
+    -r옵션 : 타고타고 들어간다
+    7. line1의 ~ 은 현재 작업 중인 위치
+    ~ == ex) C:\Users\multicampus\ssafy8
+        
+        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e3d3f085-97d7-4087-80b9-b40c0b6ce4a7/Untitled.png)
+        
+        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7e6ad7a7-5594-4cc6-9ffc-f278374b9dae/Untitled.png)
+        
+    8. .은 현재 위치
+    ..은 상위폴더
+
+### 절대경로  vs 상대경로
+
+1. 절대경로
+: 루트 디렉토리부터 목적 지점까지 거치는 모든 경로를 전부 작성한 것
+: 윈도우 바탕화면의 절대 경로 -C:/Users/ssafy/Desktop
+2. 상대경로
+: 현재 작업하고 있는 디렉토리를 기준으로 계산된 상대적 위치를 작성한 것
+: 현재 작업하고 있는 디렉토리가 C:/Users일 때 윈도우 바탕화면으로의 상대 경로는
+  ssafy/Desktop
+./:  현재 작업하고 있는 폴더
+../: 현재 작업하고 있는 폴더의 부모 폴더
+
+### **Markdown** : 텍스트 기반의 가벼운 마크업 언어, 
+                    문서의 구조와 내용을 같이 쉽고 빠르게 적고자 탄생 
+                    (마크업: 태그(#,/,’ )를 이용하여 문서의 구조를 나타내는 것)
+
+1. Github 문서의 시작과 끝
+    1. [README.md](http://README.md) 파일을 통해 오픈 소스의 공식 문서 작성
+    2. 개인 프로젝트의 소개 문서 작성
+    3. 매일 학습한 내용 정리
+    4. 마크다운을 이용한 블로그 운영
+    5. 대부분의 웹 에디터에서 지원 (각종 블로그 사이트 등)
+    6. Jupyter Notebook, Notion, 다양한 메모장 프로그램 등
+2. typora
+    1. 실시간 마크다운 변환 제공
+    2. 이미지 또는 표 삽입시 매우 편한 UI 제공
+    3. ‘#’ 헤딩(Heading)-문서 제목이나 소제목으로 사용해요
+    #의 개수에 따라 제목의 수준을 구별
+    문서 구조의 기본
+    글자 크기를 키우기 위해서 사용하면 안돼요
+    4. ‘list’ 리스트-순서가 있는 리스트와 순서가 없는 리스트가 있음
+    목록을 표시하기 위해
+    많이 사용하는 태그 중 하나
+    5. 코드블럭(Code Block)
+    일반 텍스트와 다르게 코드를 이쁘게 출력해요
+    개발자가 마크다운을 사용하는 이유 중 하나
+    사용하는 프로그램에 따라 특정언어를 명시하면
+    구문 강조(Syntax Highlighting) 지원
+    
+    인라인 코드블럭
+    문장 안에 코드가 ```print(’hello’)``` 들어갈 때
+        
+        ```python
+        print('hello')
+        ```
+        
+    6. 링크(link)
+    [보여지는 부분](클릭하면 연결될 링크)
+    ex)[구글로이동하기](https://www.google.com/)
+    7. 이미지
+    ![string](img_url)
+    8. 텍스트 강조
+    **Bold(’**bold**’)**
+    *italic(’*italic*’)*
+    ~~strikeout~~(’~strikeout~')
+    9. 수평선
+    ’—-’ 가로로 긴 수평선을 작성 hypen(-)을 3개 이상 적으면 됨
+    
+    [Markdown Cheat Sheet | Markdown Guide](https://www.markdownguide.org/cheat-sheet/)
+    
+
+### Git 기본기
+
+1. README.md
+: 프로젝트에 대한 설명 문서
+: Github에서 가장 먼저 보는 문서
+2. Repositoy : 특정 디렉토리를 버전 관리하는 저장소
+: git init 명령어로 로컬 저장소를 생성
+: git 디렉토리에 버전 관리에 필요한 모든 것이 들어 있음
+3. [README.md](http://README.md) 생성하기
+touch README.md
+→특정버전으로 남긴다 = “커밋(Commit)(3가지 영역을 바탕으로 동작)한다”
+3가지영역
+    1. working directory
+    -내가 작업하고 있는 실제 디렉토리
+    2. staging area
+    -커밋(commit)으로 남기고 싶은, 특정 버전으로 관리하고 싶은 파일이 있는 곳
+    3. repository(저장소)
+    -커밋(commit)들이 저장되는 곳(=.git)
+4. Git 기본기
+    1. Gitadd
+        1. working directory의 untracked 상태를 staging area로 올림 untracked→tracked (git으로 버전 관리하는 상태가 됨
+    2. Gitcommit
+        1. staging area에서 변경사항들을 commit 저장해서 repository로 올림
+    3. modified
+        1. commited의 상태를 modified 상태로 변경
+        
+        abc 반복해서commit1,2,3 생성
+    4. git status : 현재  git으로 관리되고 있는 파일들의 상태를 알 수 있다.
+        
+        ![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d5c30b62-2208-44f0-82e0-cc750d970502/Untitled.png)
+        
+    5. git diff (노란줄 네개) (노란줄 네개)
+    앞에 것을 기준으로 뒤에 것을 어떻게 변경했는가
+    6. local repository
+    내 서버에 있는 repository
+    7. remote repository
+    외부 서버(ex.github)에 있는 repository
+    8. git remote add origin {remote_repo} (ex.[https://github.com/SeheeP1217/first_repo](https://github.com/SeheeP1217/first_repo))
+    origin = repo_name 별명이지만 일반적 origin
+    git push -u origin master
+    master = local branch
+    9. git push A B
+    A= 어디로 push 할건지 
+    B= branch 위(ex.master)
+    
+    10. git clone {remote_repo}
+    git push origin master
+    11. git pull
+5. TIL(Today I Learned) : 매일 내가 배운 것을 마크다운으로 정리해서 문서화 하는 것
+매일 잔디 심기
