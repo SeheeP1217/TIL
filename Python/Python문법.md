@@ -112,3 +112,21 @@ for _ in range(5):
 
 
 ## 사전 자료형
+- key와 value의 쌍을 데이터로 가지는 자료형
+- 변경 불가능 자료형을 키로 사용
+- key 데이터만 뽑아서 리스트로 이용할 때는 keys() 함수
+- value 데이터만 뽑아서 리스트로 이용할 때는 values() 함수
+```
+data = dict()  #dict 초기화
+data['사과'] = 'Apple'
+data['바나나'] = 'Banana'
+data['코코넛'] = 'Coconut'
+
+#키 데이터만 담은 리스트
+key_list = data.keys()
+#값 데이터만 담은 리스트
+value_list = data.values()
+
+#각 키에 따른 값을 하나씩 출력
+for key in key_list:
+  print(data[key])
