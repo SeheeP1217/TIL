@@ -8,4 +8,4 @@ Today  I Learned 미루지 않고 바로바로 정리하는 습관
 
 [Python](https://github.com/SeheeP1217/TIL/tree/master/Python)
 
-[Algorithm]
+[Algorithm](https://github.com/SeheeP1217/TIL/tree/master/Algorithm)
