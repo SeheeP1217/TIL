@@ -142,7 +142,20 @@ for key in key_list:
 - 새로운 원소 추가: (변수).add(원소)
 - 새로운 원소 여러개 추가: (변수).update([원소1, 원소2])
 - 특정 원소 삭제: (변수).remove(원소)
-\
+
+## 기본 입출력
+  1. input(): 한 줄의 문자열을 입력 받는 함수
+  2. map(): 리스트의 모든 원소에 각각 특정한 함수를 적용할 때 사용
+  3. split(): 각 데이터를 '문자열'로 구별해 리스트로 나타냄
+    - 숫자 리스트로 나타내고 싶다면 data = list(map(int, input().split()))
+  4. 빠르게 입력 받기
+  ```
+  import sys
+  data = sys.stdin.readline().rstrip()
+  print(data)
+  ```
+  5. print() 출력 후 줄바꿈을 원하지 않는다면 end 이용. print(a, end = " ")
+  6. f-string: print(f'정답은 {data}입니다.')
 왜
 아ㅏㅏ
 아아
