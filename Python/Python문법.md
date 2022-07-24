@@ -156,12 +156,63 @@ for key in key_list:
   ```
   5. print() 출력 후 줄바꿈을 원하지 않는다면 end 이용. print(a, end = " ")
   6. f-string: print(f'정답은 {data}입니다.')
-왜
-아ㅏㅏ
-아아
-아아
-아ㅏㅏㅏㅇ
-제발
-되라고
-잔디
 
+
+## 조건문
+  - 프로그램의 흐름을 제어하는 문법(프로그램의 로직을 설정할 수 있음)
+  - 코드의 블록을 들여쓰기로 지정
+  - if ~:, elif ~:, else:
+  - 논리 연산자: X and Y, X or Y, not X
+  - X in 리스트(튜플, 문자열, 딕셔너리): 리스트 안에 X가 들어가 있으면 True
+  - X not in 리스트(튜플, 문자열, 딕셔너리): 문자열 안에 X가 들어가 있지 않으면 True
+  - 조건문 간소화: (True 값) if (조건) else (False 값)
+
+
+## 반복문
+  - 특정 소스코드를 반복적으로 실행하고자 할 때 사용
+  - while문
+    ```
+    i = 1
+    result = 0
+    
+    while i <= 9:
+      result += i
+      i += 1
+
+    print(result)
+    ```
+    - 무한 루프 유의 (반복문을 탈출할 수 있는지 확인)
+  - for문
+    ```
+    for 변수 in 리스트:
+      실행할 소스코드
+    ```
+    - 변수를 이용하여 in 뒤에 오는 데이터(리스트, 튜플 등)에 포함되어 있는 원소를 첫 번째 인덱스부터 차례대로 하나씩 방문
+    ```
+    array = [9, 8, 7, 6, 5]
+
+    for x in array:
+      print(x)
+    ```
+    - 연속적인 값을 차례대로 순회할 때는 range()를 주로 사용
+      - range(시작값, 끝값+1) (인자를 하나만 넣으면 시작값은 자동으로 0)
+    ```
+    result = 0
+    
+    for i in range(1, 10):
+      result += i
+
+    print(result)
+    ```
+    - continue: 반복문에서 남은 코드의 실행을 건너뛰고, 다음 반복을 진행하고자 할 때 사용
+    ```
+    result = 0
+
+    for i in range(1, 10):
+      if i % 2 == 0:
+        continue
+      result += i
+
+    print(result)
+    ```
+    
