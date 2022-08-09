@@ -1,5 +1,4 @@
-T = 1
-
+T = 10
 for test_case in range(1, T + 1) :
     N = int(input())
     lst = list(map(int,input().split()))
@@ -14,4 +13,4 @@ for test_case in range(1, T + 1) :
             if lst[i]-lst[i+2] < minC:
                 minC = lst[i]-lst[i+2]
             rv += minC
-print(f"#{test_case} {rv}")
+    print(f"#{test_case} {rv}")
