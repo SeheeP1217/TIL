@@ -13,7 +13,7 @@ for test_case in range(1, 11):
             if j < mn:
                 mn = j      
 
-        # lst에서 max는 -1, min은 +1 한번씩만(공통 숫자 피하기) 해주기
+        # lst에서 max는 -1, min은 +1 한번씩만 해주기(공통 숫자 피하기)
         for m in range(len(lst)):
             if lst[m] == mx:
                 lst[m] -= 1
