@@ -1,0 +1,31 @@
+T = int(input())
+for test_case in range(1, T + 1):
+    P, Pa, Pb = map(int, input().split())
+    l1 = l2 = 1
+    Ca = Cb = 0     #count
+    P1 = P
+    P2 = P
+    while l1 <= P :
+        Ca += 1
+        middle1 = (l1 + P1)//2
+        if middle1 == Pa :
+            break
+        elif middle1 > Pa :
+            P1 = middle1
+        else :
+            l1 = middle1
+    while l2 <= P :      # Ca 순회를 돌며 P값이 변해버림
+        Cb += 1
+        middle2 = (l2 + P2)//2
+        if middle2 == Pb :
+            break
+        elif middle2 > Pb :
+            P2 = middle2
+        else :
+            l2 = middle2
+    if Ca > Cb:
+        print(f"#{test_case} B")
+    elif Ca < Cb:
+        print(f"#{test_case} A")
+    else:
+        print(f"#{test_case} 0")
