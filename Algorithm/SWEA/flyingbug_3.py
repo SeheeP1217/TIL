@@ -1,32 +1,30 @@
 T = int(input())
 for test_case in range(1, T + 1):
     N, M = map(int, input().split())
-    li = [list(map(int, input().split())) for _ in range(N)]
-    row = col = N
-    arr = [[0 for j in range(col)] for i in range(row)]
-    lst = []
+    arr = [list(map(int, input().split())) for _ in range(N)]
+    dx = [1, 0, -1, 0]  #상하
+    dy = [0, 1, 0, -1]  #좌우
+    dc1 = [1, 1, -1, -1] #대각선1
+    dc2 = [-1, 1, 1, -1]#대각선2
+    result = 0
+
     for i in range(N):
         for j in range(N):
-            for m in range(M):
-                left = i-m
-                right = i+m
-                up = j-m
-                down = j+m
-                if i-m < 0:
-                    left = 0
-                if j-m < 0:
-                    up = 0
-                if i+m > N:
-                    right = N-1
-                if j+m > N:
-                    down = N-1
-                sma = arr[left][j] + arr[right][j] + arr[i][up] + arr[i][down]
-                smc = arr[left][up] + arr[right][up] + arr[left][down] + arr[right][down]
-                lst.append(sma)
-                lst.append(smc)
-    mx = lst[0]
-    for t in lst:
-        if t > mx:
-            mx = t
-    print(f"#{test_case} {mx}")
+            sum1 = arr[i][j]    #상하좌우
+            sum2 = arr[i][j]    #대각선
+            for a in range(4):
+                for b in range(1, M):
+                    x = i + dx[a] * b
+                    y = j + dy[a] * b
+                    c1 = i + dc1[a] * b
+                    c2 = j + dc2[a] * b
+                    if 0 <= x < N and 0 <= y < N:
+                        sum1 += arr[x][y]
+                    if 0 <= c1 < N and 0 <= c2 < N:
+                        sum2 += arr[c1][c2]
+            if result < sum1:
+                result = sum1
+            if result < sum2:
+                result = sum2
+    print(f"#{test_case} {result}")
 
