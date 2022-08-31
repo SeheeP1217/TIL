@@ -9,7 +9,7 @@ def index(request):
 
 def greeting(request):
     foods = ['apple', 'orange', 'banana']
-    info = {'name':'AIDEN'}
+    info = {'name':'SEHEE'}
     context = {
         'foods': foods,
         'info': info
@@ -17,7 +17,7 @@ def greeting(request):
     return render(request, 'articles/greeting.html', context)
 
 def dinner(request):
-    foods = ['초밥', '알리오올리오', '제로콜라', '티즐']
+    foods = ['초밥', '아이스아메리카노', '쿠키', '티즐']
     pick = random.choice(foods)
     context = {
         'foods': foods,
