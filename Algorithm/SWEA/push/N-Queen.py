@@ -1,27 +1,42 @@
-def dfs(n, sm):
+def check(si, sj):
+    # [1] 위쪽체크
+    for i in range(si):
+        if arr[i][sj]:  # 해당좌표에 Q있다면 0
+            return 0
+    # [2] 좌측위쪽 대각선
+    i, j = si - 1, sj - 1
+    while i >= 0 and j >= 0:
+        if arr[i][j]:
+            return 0
+        i, j = i - 1, j - 1
+    # [3] 우측위쪽 대각선
+    i, j = si - 1, sj + 1
+    while i >= 0 and j < N:
+        if arr[i][j]:
+            return 0
+        i, j = i - 1, j + 1
+    return 1
+
+
+def dfs(n):
     global ans
-
-    if ans <= sm:
-        return
-
     if n == N:
-        ans = min(ans, sm)
+        ans += 1
         return
 
     for j in range(N):
-        if v[j] == 0:
-            v[j] = 1
-            dfs(n+1, sm + arr[n][j])
-            v[j] = 0
+        if check(n, j):
+            arr[n][j] = 1
+            dfs(n + 1)
+            arr[n][j] = 0
+
 
 T = int(input())
-for tc in range(1, T+1):
+# T = 10
+for test_case in range(1, T + 1):
     N = int(input())
-    arr = [list(map(int, input().split())) for _ in range(N)]
+    arr = [[0] * N for _ in range(N)]
+    ans = 0
 
-    v = [0]*N
-    ans = 10000
-
-    dfs(0, 0)
-
-    print(f"#{tc} {ans}")
+    dfs(0)
+    print(f'#{test_case} {ans}')
