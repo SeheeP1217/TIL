@@ -59,7 +59,6 @@ def move():
     M -= 1
     move()
 
-
 T = int(input())
 for tc in range(1, T+1):
     N, M, K = map(int, input().split())
@@ -71,5 +70,3 @@ for tc in range(1, T+1):
     ans = 0
     move()
     print(f"#{tc} {ans}")
-
-

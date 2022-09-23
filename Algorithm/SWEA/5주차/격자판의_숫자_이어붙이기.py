@@ -1,7 +1,7 @@
 def f():
     if cnt == 6:
         return
-    if arr[i-1][j] != '
+    if arr[i-1][j] != 'o':
 
 
 
