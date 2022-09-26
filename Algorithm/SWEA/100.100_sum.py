@@ -34,7 +34,4 @@ for test_case in range(1, T+1):
     if sum4 > max1:
         max1 = sum4
 
-    print(f"#{test_case} {max1}")     
-
-
-
+    print(f"#{test_case} {max1}")
