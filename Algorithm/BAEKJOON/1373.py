@@ -1,17 +1,22 @@
 N = list(input())
-ans = []
-while len(N) >= 3:
-    lst = []
-    lst.append(N[len(N)-3:len(N)])
-    N.pop(len(N)-3)
-    N.pop(len(N)-2)
-    N.pop(len(N)-1)
-    sm = 0
-    for i in range(3):
-        sm += int(lst[0][i]) * 2 ** (2-i)
-    ans.insert(0, sm)
-if len(N) == 1:
-    ans.insert(0, int(N[0]))
-elif len(N) == 2:
-    ans.insert(0, int(N[0])*2+int(N[1]))
-print(''.join(map(str, ans)))
+cut = len(N)//3
+left = len(N)%3
+
+lst = []
+num_8 = []
+if left == 2:
+    num_8.append(int(N[0]) * 2 + int(N[1]))
+    N.pop(0)
+    N.pop(0)
+elif left == 1:
+    num_8.append(int(N[0]))
+    N.pop(0)
+
+for i in range(cut):
+    lst.append(N[3*i:3*i+3])
+
+for j in range(len(lst)):
+    num_8.append(int(lst[j][0])*4 + int(lst[j][1])*2 + int(lst[j][2]))
+
+print(''.join(map(str,num_8)))
+
