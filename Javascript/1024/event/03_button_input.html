@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .blue {
+      color: blue;
+    }
+  </style>
+</head>
+<body>
+  <h1></h1>
+  <button id="btn">클릭</button>
+  <input type="text">
+
+  <script>
+    //1. 버튼 선택하기
+    const btn = document.querySelector('#btn')
+
+    //2. 이벤트 핸들러 부착하기(클릭이 일어났을 때 blue로 토글하기)
+    btn.addEventListener('click', function (event) {
+      const h1Tag = document.querySelector('h1')
+      h1Tag.classList.toggle('blue')
+    })
+    // 3. input 선택하기 (위의 아이디로 선택하기)
+    const inputTag = document.querySelector('input')
+
+    // 4. 이벤트 핸들러 부착
+    inputTag.addEventListener('input', function (event) {
+      
+      // h1Tag 선택
+      const h1Tag = document.querySelector('h1')
+      // 발생하는 input 이벤트의 value 실시간으로 출력
+      h1Tag.innerText = event.target.value
+    })
+  </script>
+</body>
+</html>

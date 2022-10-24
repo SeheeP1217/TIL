@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="btn">버튼</button>
+  <p id="counter">0</p>
+  
+  <script>
+    // HTML 요소 생성
+    const btn = document.querySelector('#btn')
+
+    // counter 초기값 생성
+    let countNum = 0
+
+    // 이벤트 핸들러 작성 (클릭되면 생성)
+    btn.addEventListener('click', function () {
+      // 기본 이벤트 출력원하면 console.log(event) 
+
+      // 버튼 누를 떄마다 counter 증가시키기
+      // counter가 있는 p 태그로 HTML 요소 생성
+      const pTag = document.querySelector('#counter')
+      // count 증가
+      countNum += 1
+      
+      // p태그에 countNum 값 출력
+      pTag.innerText = countNum
+    })
+  </script>
+</body>
+</html>
