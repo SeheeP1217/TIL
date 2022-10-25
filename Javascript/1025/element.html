@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>요일</h3>
+    <ul id="day">
+        <li>월요일</li>
+        <li>화요일</li>
+        <li>수요일</li>
+        <li>목요일</li>
+        <li>금요일</li>
+    </ul>
+    <script>
+        const sunday = document.createElement('li') //요소 만들기
+        sunday.innerText = '일요일'
+        
+        //요소 배치하기
+        // prepend, append, before, after
+        const day = document.querySelector('#day')
+        day.prepend(sunday)
+
+        const sat = document.createElement('li')
+        sat.innerText = '토요일'
+        day.append(sat)
+
+        const startP = document.createElement('p')
+        startP.innerText = 'start'
+        day.before(startP)
+
+        const endP = document.createElement('p')
+        endP.innerText = 'end'
+        day.after(endP)
+
+        const mon = day.children[1]
+        mon.remove()
+
+        const sun = day.firstChild
+        day.append(sun)
+
+        
+    </script>
+</body>
+</html>
