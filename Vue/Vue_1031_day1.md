@@ -1,5 +1,7 @@
 # Vue
 
+<hr>
+
 ### Vue intro
 - Front-end Framework
   - Front-end 개발: 사용자에게 보여주는 화면 만들기
@@ -20,16 +22,16 @@
         3. JSON 데이터를 JavaScript로 처리, DOM 트리에 반영(렌더링)
         - CSR 방식을 사용하는 이유
           1. 모든 HTML 페이지를 서버로부터 받는 것이 아니기 때문
-            - 클라이언트-서버 간 통신 즉, 트래픽이 감소 -> 응답 속도 빨라짐
+            : 클라이언트-서버 간 통신 즉, 트래픽이 감소 -> 응답 속도 빨라짐
           2. 매번 새 문서를 받아 새로고침하는 것이 아니라 필요한 부분만 고쳐나가므로 각 요청이 끊김없이 진행
-            - 요청이 자연스럽게 진행 => UX 향상
+            : 요청이 자연스럽게 진행 => UX 향상
           3. BE와 FE의 작업 영역을 명확히 분리할 수 있음 (협업이 용이)
         - 단점
           1. 첫 구동 시 필요한 데이터가 많으면 많을수록 최초 작동 시작까지 오랜 시간이 소요
           2. Naver, Netflix, Disney+ 등 모바일에 설치된 Web-App을 실행하게 되면 잠깐의 로딩 시간이 필요
           3. 검색 엔진 최적화(SEO, Search Engine Optimization)가 어려움
-            - 서버가 제공하는 것은 텅 빈 HTML
-            - 내용을 채우는 것은 AJAX 요청으로 얻은 JSON 데이터로 클라이언트(브라우저)가 진행
+            : 서버가 제공하는 것은 텅 빈 HTML
+            : 내용을 채우는 것은 AJAX 요청으로 얻은 JSON 데이터로 클라이언트(브라우저)가 진행
           4. 대체적으로 HTML에 작성된 내용을 기반으로 하는 검색 엔진에 빈 HTML을 공유하는 SPA 서비스가 노출되기는 어려움
       - +) SEO (Search Engine Optimization)이란?
         - google, bing과 같은 검색 엔진 등에 내 서비스나 제품 등이 효율적으로 검색 엔진에 노출되도록 개선하는 과정
@@ -66,6 +68,7 @@
 </body>
 ```
 
+<hr>
 ### Vue instance
 - MVVM Pattern
   - 소프트웨어 아키텍처 패턴의 일종
@@ -156,6 +159,8 @@
   - 즉 this가 상위 객체 window를 가리킴
   - 호출은 문제 없이 가능하나 this로 Vue의 data를 변경하지 못함
 
+<hr>
+
 ### Basic of syntax
 - Template Syntax
   - 렌더링 된 DOM을 기본 Vue instance의 data에 선언적으로 바인딩할 수 있는 HTML 기반 template syntax를 사용
@@ -192,6 +197,9 @@
   </script>
 </body>
 ```
+
+<hr>
+
 ### Directives
 - Directives 기본 구성
   - v-접두사가 있는 특수 속성에는 값을 할당할 수 있음
@@ -282,67 +290,67 @@
       - 주로 v-for directive 작성 시 사용
       - vue 화면 구성 시 이전과 달라진 점을 확인하는 용도로 활용 (key값이 중복되면 안됨)
       - 각 요소가 고유한 값을 가지고 있지 않다면 생략할 수 있음
-    ```html
-    <body>
-    <!-- 3. v-for -->
-    <div id="app">
-      <h2>String</h2>
-      <div v-for="char in myStr">
-        {{ char }}
-      </div>
-      <div v-for="(char, index) in myStr" :key="index">
-        <p>{{ index }}번째 문자열 {{ char }}</p>
-      </div>
+      ```html
+      <body>
+        <!-- 3. v-for -->
+        <div id="app">
+          <h2>String</h2>
+          <div v-for="char in myStr">
+            {{ char }}
+          </div>
+          <div v-for="(char, index) in myStr" :key="index">
+            <p>{{ index }}번째 문자열 {{ char }}</p>
+          </div>
 
-      <h2>Array</h2>
-      <div v-for="(item, index) in myArr" :key="index">
-      <!-- <div v-for="(item, index) in myArr" :key="another-${index}"> --> // key 값이 위와 같아서 뜨는 warning을 없애려면 key값을 바꿔주어야한다.
-        <p>{{ index }}번째 아이템 {{ item }}</p>
-      </div>
+          <h2>Array</h2>
+          <div v-for="(item, index) in myArr" :key="index">
+          <!-- <div v-for="(item, index) in myArr" :key="another-${index}"> --> // key 값이 위와 같아서 뜨는 warning을 없애려면 key값을 바꿔주어야한다.
+            <p>{{ index }}번째 아이템 {{ item }}</p>
+          </div>
 
-      <div v-for="(item, index) in myArr2" :key="`arry-${index}`">
-        <p>{{ item.id }}번째 아이템</p>
-        <p>{{ item.name }}</p>
-      </div>
+          <div v-for="(item, index) in myArr2" :key="`arry-${index}`">
+            <p>{{ item.id }}번째 아이템</p>
+            <p>{{ item.name }}</p>
+          </div>
 
-      <h2>Object</h2>
-      <div v-for="value in myObj">    // 각 요소가 고유한 값을 가지고 있어서 key 속성을 생략할 수 있음
-        <p>{{ value }}</p>
-      </div>
+          <h2>Object</h2>
+          <div v-for="value in myObj">    // 각 요소가 고유한 값을 가지고 있어서 key 속성을 생략할 수 있음
+            <p>{{ value }}</p>
+          </div>
 
-      <div v-for="(value, key) in myObj"  :key="key">     //객체에서는 key 값이 어차피 겹치지 않기 때문에 key="key"로 바로 쓰는 게 일반적임
-        <p>{{ key }} : {{ value }}</p>
-      </div>
-    </div>
+          <div v-for="(value, key) in myObj"  :key="key">     //객체에서는 key 값이 어차피 겹치지 않기 때문에 key="key"로 바로 쓰는 게 일반적임
+            <p>{{ key }} : {{ value }}</p>
+          </div>
+        </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <script>
-      const app = new Vue({
-        el: '#app',
-        data: {
-          // 1. String
-          myStr: 'Hello, World!',
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <script>
+          const app = new Vue({
+            el: '#app',
+            data: {
+              // 1. String
+              myStr: 'Hello, World!',
 
-          // 2-1. Array
-          myArr: ['python', 'django', 'vue.js'],
+              // 2-1. Array
+              myArr: ['python', 'django', 'vue.js'],
 
-          // 2-2. Array with Object
-          myArr2: [
-            { id: 1, name: 'python', completed: true},
-            { id: 2, name: 'django', completed: true},
-            { id: 3, name: 'vue.js', completed: false},
-          ],
-          
-          // 3. Object
-          myObj: {
-            name: 'harry',
-            age: 27
-          },
-        }
-      })
-    </script>
-  </body>
-  ```
+              // 2-2. Array with Object
+              myArr2: [
+                { id: 1, name: 'python', completed: true},
+                { id: 2, name: 'django', completed: true},
+                { id: 3, name: 'vue.js', completed: false},
+              ],
+              
+              // 3. Object
+              myObj: {
+                name: 'harry',
+                age: 27
+              },
+            }
+          })
+        </script>
+      </body>
+      ```
   - v-on
     - ':'을 통해 전달받은 인자를 확인
     - 값으로 JS표현식 작성
@@ -362,9 +370,128 @@
         - ['JS 표현식', 'JS 표현식', ...]
     - Vue data의 변화에 반응하여 DOM에 반영하므로 상황에 따라 유동적 할당 가능
     - ':' shortcut 제공
+    ```html
+      <style>
+        .red-text {
+          color: red;
+        }
+        .border-black {
+          border: solid 1px black;
+        }
+
+        .dark-mode {
+          color: white;
+          background-color: black
+        }
+
+        .white-mode {
+          color: black;
+          background-color: white;
+        }
+      </style>
+    </head>
+    <body>
+      <div id="app">
+        <button v-on:click="number++">increase Number</button>
+        <p>{{ number }}</p>
+
+        <button v-on:click="toggleActive">toggle isActive</button>
+        <p>{{ isActive }}</p>
+        // 표현식이 들어가는 자리이기 때문에 method도 사용할 수 있음
+
+        // v-on = @ 으로 축약해서 사용, ()안에 인자 전달 가능
+        <button @click="checkActive(isActive)">check isActive</button>
+      </div>
+
+      <div id="app2">
+        <a v-bind:href="url">Go To GOOGLE</a> //v-bind는 뒤에 오는 속성값을 url이 문자열이 아닌 JavaScript의 변수값으로 인식
+
+        <p v-bind:class="redTextClass">빨간 글씨</p>
+        <p v-bind:class="{ 'red-text': true }">빨간 글씨</p>  // true, false로 활성화 선택 가능
+        <p v-bind:class="[redTextClass, borderBlack]">빨간 글씨, 검은 테두리</p>  // 배열로 여러 설정을 할 수 있음
+
+        <p :class="theme">상황에 따른 활성화</p>
+        <button @click="darkModeToggle">dark Mode {{ isActive }}</button>
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+      <script>
+        const app = new Vue({
+          el: '#app',
+          data: {
+            number: 0,
+            isActive: false,
+          },
+          methods: {
+            toggleActive: function () {
+              this.isActive = !this.isActive
+            },
+
+            checkActive: function (check) {
+              console.log(check)
+            }
+          }
+        })
+
+        const app2 = new Vue({
+          el: '#app2',
+          data: {
+            url: 'https://www.google.com/',
+            redTextClass: 'red-text',
+            borderBlack: 'border-black',
+            isActive: true,
+            theme: 'dark-mode'
+          },
+          methods: {
+            darkModeToggle() {
+              this.isActive = !this.isActive
+              if (this.isActive) {
+                this.theme = 'dark-mode'        // dark-mode, white-mode는 style 태그에 이미 설정되어 있는 변수
+              } else {
+                this.theme = 'white-mode'
+              }
+            }
+          }
+        })
+      </script>
+    </body>
+    ```
   - v-model
     - Vue instance와 DOM의 양방향 바인딩
     - Vue data 변경 시 v-model로 연결된 사용자 입력 element에도 적용
+    ```html
+    <body>
+      <div id="app">
+        <h2>1. Input -> Data</h2>
+        <h3>{{ myMessage }}</h3>
+        <input @input="onInputChange" type="text">
+        <hr>
+
+        <h2>2. Input <-> Data</h2>
+        <h3>{{ myMessage2 }}</h3>
+        <input v-model="myMessage2" type="text">      //data의 myMessage2와 v-model의 양방향 binding
+        <hr>                                          //영어는 바로 뜨지만 한글은 글자가 완성되어야 볼 수 있음
+      </div>
+
+      <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+      <script>
+        const app = new Vue({
+          el: '#app',
+          data: {
+            myMessage: '',
+            myMessage2: '',
+          },
+          methods: {
+            onInputChange: function (event) {
+              this.myMessage = event.target.value
+            },
+          }
+        })
+      </script>
+    </body>
+    ```
+
+<hr>
 
 ### Vue advanced
 - computed
@@ -374,6 +501,52 @@
   - method Vs computed
     - method : 호출될 때마다 함수를 실행, 같은 결과여도 매번 새롭게 계산
     - computed : 함수의 종속 대상의 변화에 따라 계산 여부가 결정됨, 종속 대상이 변하지 않으면 항상 저장(캐싱)된 값을 반환
+  ```html
+  <body>
+    <div id="app">
+      <h1>data_01 : {{ number1 }}</h1>
+      <h1>data_02 : {{ number2 }}</h1>
+      <hr>
+      <h1>add_method : {{ add_method() }}</h1>
+      <h1>add_method : {{ add_method() }}</h1>
+      <h1>add_method : {{ add_method() }}</h1>
+      <hr>
+      <h1>add_computed : {{ add_computed }}</h1>    // computed는 계산된 '값'이기 때문에 ()가 필요 없다
+      <h1>add_computed : {{ add_computed }}</h1>
+      <h1>add_computed : {{ add_computed }}</h1>
+      <hr>
+      <button v-on:click="dataChange">Change Data</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          number1: 100,
+          number2: 100
+        },
+        computed: {
+          add_computed: function () {
+            console.log('computed 실행됨!')
+            return this.number1 + this.number2
+          }
+        },
+        methods: {
+          add_method: function () {
+            console.log('method 실행됨!')
+            return this.number1 + this.number2
+          },
+          dataChange: function () {
+            this.number1 = 200
+            this.number2 = 300
+          }
+        }
+      })
+    </script>
+  </body>
+  -> method는 3번 호출하지만 computed는 1번만 호출됨
+  ```
 - watch
   - 특정 데이터의 변화를 감지하는 기능
     1. watch 객체를 정의
@@ -385,9 +558,100 @@
     1. 감시 대상 data의 이름으로 객체 생성
     2. 실행하고자 하는 method를 handler에 문자열 형태로 할당
   - Array, Object의 내부 요소 변경 감지를 위해서는 deep 속성 추가 필요
+  ```html
+  <body>
+    <div id="app">
+      <h3>Increase number</h3>
+      <p>{{ number }}</p>
+      <button @click="number++">+</button>
+      <hr>
+
+      <h3>Change name</h3>
+      <p>{{ name }}</p>
+      <input type="text" v-model="name">
+      <hr>
+
+      <!-- <h3>push myObj</h3>
+      <p>{{ myObj }}</p>
+      <button @click="itemChange">change Item</button> -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          number: 0,
+          name: '',
+          myObj: {completed: true}
+        },
+        methods: {
+          nameChange: function () {
+            console.log('name is changed')
+          },
+
+          itemChange: function () {
+            this.myObj.completed = !this.myObj.completed
+          }
+        },
+        watch: {
+          number: function (val, oldVal) {
+            console.log(val, oldVal)
+          },
+
+          name: {
+            handler: 'nameChange'
+          },
+
+          myObj: {
+            handler: function (val) {
+              console.log(val)
+            },
+            deep: true                      //myObj이 {}, [] 형태이므로 deep: true 옵션이 필요
+          },
+        }
+      })
+    </script>
+  </body>
+  ```
 - filters
   - 텍스트 형식화를 적용할 수 있는 필터
   - interpolation 혹은 v-bind를 이용할 때 사용 가능
   - 필터는 자바스크립트 표현식 마지막에 '|'(파이프)와 함께 추가되어야 함
   - 이어서 사용(chaining) 가능
-  - 
+  ```html
+  <body>
+    <div id="app">
+      <p>{{ numbers | getOddNums | getUnderTenNums}}</p>    // filter 여러개 적용 가능
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          numbers: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15],
+        },
+        filters: {
+          getOddNums: function (nums) {
+            const oddNums = nums.filter((num) => {
+              return num % 2
+            })
+            return oddNums
+          },
+          
+          getUnderTenNums: function (nums) {
+            const underTen = nums.filter((num) => {
+              return num < 10
+            })
+            return underTen
+          }
+        }
+      })
+    </script>
+  </body>
+  ```
+
+<hr>
+
+### Vue Style Guide
