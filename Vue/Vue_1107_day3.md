@@ -1,6 +1,7 @@
 # Vue
 
 ### Vuex
+
 - State Management
   - State(상태)란? 현재에 대한 정보(data)
   - Web Application 상태는 현재 App이 가지고 있는 Data로 표현 가능
@@ -18,6 +19,7 @@
   - 중앙 저장소의 데이터가 변경되면 각각의 component는 해당 데이터의 변화에 반응하여 새로 변경된 데이터를 반영함
   - 규모가 크거나 컴포넌트 중첩이 깊은 프로젝트의 관리가 매우 편리
 - Vuex
+
   - "state management pattern + Library" for vue.js (상태 관리 패턴 + 라이브러리)
   - 중앙 저장소를 통해 상태 관리를 할 수 있도록 하는 라이브러리
   - 데이터가 예측 가능한 방식으로만 변경될 수 있도록 하는 규칙을 설정하며, Vue의 반응성을 효율적으로 사용하는 상태 관리 기능을 제공
@@ -29,165 +31,180 @@
   $ cd vuex-app
   $ vue add vuex (-> y 선택)
   ```
+
 - vuex의 핵심 컨셉 4가지
+
   1. State
-    - vue 인스턴스의 data에 해당
-    - 중앙에서 관리하는 모든 상태 정보
-    - 개별 component는 state에서 데이터를 가져와서 사용
-      - 개별 component가 관리하던 data를 중앙저장소(Vuex Store의 state)에서 관리하게 됨
-    - state의 데이터가 변화하면 해당 데이터를 사용(공유)하는 component도 자동으로 다시 렌더링
-    - $store.state로 state 데이터에 접근
-    - Mutations만 state에 영향을 미침
-    ```
-    [실습1] - 중앙저장소에 있는 state에 접근하는 방법
-    #index.js
-      state: {
-        // 중앙에서 관리하는 모든 상태 정보
-        // $store.state로 접근 가능
-        // store의 state에 message 데이터 정의
-        message: 'message in store'
+
+  - vue 인스턴스의 data에 해당
+  - 중앙에서 관리하는 모든 상태 정보
+  - 개별 component는 state에서 데이터를 가져와서 사용
+    - 개별 component가 관리하던 data를 중앙저장소(Vuex Store의 state)에서 관리하게 됨
+  - state의 데이터가 변화하면 해당 데이터를 사용(공유)하는 component도 자동으로 다시 렌더링
+  - $store.state로 state 데이터에 접근
+  - Mutations만 state에 영향을 미침
+
+  ```
+  [실습1] - 중앙저장소에 있는 state에 접근하는 방법
+  #index.js
+    state: {
+      // 중앙에서 관리하는 모든 상태 정보
+      // $store.state로 접근 가능
+      // store의 state에 message 데이터 정의
+      message: 'message in store'
+    },
+
+  #App.vue
+    <template>
+      <div id="app">
+        <h1>{{ message }} </h1>
+      </div>
+    </template>
+
+    <script>
+    export default {
+      name: 'App',
+      components: {
       },
-
-    #App.vue
-      <template>
-        <div id="app">
-          <h1>{{ message }} </h1>
-        </div>
-      </template>
-
-      <script>
-      export default {
-        name: 'App',
-        components: {
-        },
-        computed: {
-          message() {
-            return this.$store.state.message
-          }
+      computed: {
+        message() {
+          return this.$store.state.message
         }
       }
-      </script>
-    ```
+    }
+    </script>
+  ```
+
   2. Mutations
-    - 실제로 state를 변경하는 유일한 방법
-    - vue 인스턴스의 methods에 해당하지만 Mutations에서 호출되는 핸들러(handler) 함수는 반드시 동기적이어야 함
-      - 비동기 로직으로 mutations를 사용해서 state를 변경하는 경우, state의 변화의 시기를 특정할 수 없기 때문
-    - 첫번째 인자로 state를 받으며, component 혹은 Actions에서 commit()메서드로 호출됨
-    ```
-    [실습3] - state 변경하기
-    #index.js
-      mutations: {
-        CHANGE_MESSAGE(state, newMessage) {
-          // console.log(state)
-          // console.log(newMessage)
-          state.message = newMessage
-        }
-      },
-      actions: {
-        changeMessage(context, newMessage) {
-          // console.log(context)
-          // console.log(newMessage)
-          // context.commit('호출하고자 하는 mutations 메서드 이름', 추가데이터)
-          context.commit('CHANGE_MESSAGE', newMessage)
-        }
-      },
-    ```
-  3. Actions
-    - mutations와 비슷하지만 비동기 작업을 포함할 수 있다는 차이가 있음
-    - state를 직접 변경하지 않고 commit()메서드로 mutations를 호출해서 state를 변경함
-    - context 객체를 인자로 받으며, 이 객체를 통해 store.js의 모든 요소와 매서드에 접근할 수 있음 (== 즉, state를 직접 변경할 수 있지만 하지 않아야 함)
-    - component에서 dispatch() 메서드에 의해 호츨됨
-    ```
-    [실습2] - 입력을 통해 message 값 바꾸기
-    #App.vue
-      <template>
-        <div id="app">
-          <h1>{{ message }} </h1>
-          <input 
-            type="text"
-            @keyup.enter="changeMessage"  
-            v-model="inputData"
-          >
-        </div>
-      </template>
 
-      <script>
-      export default {
-        name: 'App',
-        data() {
-          return {
-            inputData: null,
-          }
-        },
-        components: {
-        },
-        computed: {
-          message() {
-            return this.$store.state.message
-          }
-        },
-        methods: {
-          changeMessage() {
-            const newMessage = this.inputData
-            // this.$store.dispatch('액션 메서드 이름', 추가데이터)
-            this.$store.dispatch('changeMessage', newMessage)
-          }
+  - 실제로 state를 변경하는 유일한 방법
+  - vue 인스턴스의 methods에 해당하지만 Mutations에서 호출되는 핸들러(handler) 함수는 반드시 동기적이어야 함
+    - 비동기 로직으로 mutations를 사용해서 state를 변경하는 경우, state의 변화의 시기를 특정할 수 없기 때문
+  - 첫번째 인자로 state를 받으며, component 혹은 Actions에서 commit()메서드로 호출됨
 
-        }
+  ```
+  [실습3] - state 변경하기
+  #index.js
+    mutations: {
+      CHANGE_MESSAGE(state, newMessage) {
+        // console.log(state)
+        // console.log(newMessage)
+        state.message = newMessage
       }
-      </script>
+    },
+    actions: {
+      changeMessage(context, newMessage) {
+        // console.log(context)
+        // console.log(newMessage)
+        // context.commit('호출하고자 하는 mutations 메서드 이름', 추가데이터)
+        context.commit('CHANGE_MESSAGE', newMessage)
+      }
+    },
+  ```
 
-    #index.js
-      actions: {
-        changeMessage(context, newMessage) {
-          console.log(context)
-          console.log(newMessage)
+  3. Actions
+
+  - mutations와 비슷하지만 비동기 작업을 포함할 수 있다는 차이가 있음
+  - state를 직접 변경하지 않고 commit()메서드로 mutations를 호출해서 state를 변경함
+  - context 객체를 인자로 받으며, 이 객체를 통해 store.js의 모든 요소와 매서드에 접근할 수 있음 (== 즉, state를 직접 변경할 수 있지만 하지 않아야 함)
+  - component에서 dispatch() 메서드에 의해 호츨됨
+
+  ```
+  [실습2] - 입력을 통해 message 값 바꾸기
+  #App.vue
+    <template>
+      <div id="app">
+        <h1>{{ message }} </h1>
+        <input
+          type="text"
+          @keyup.enter="changeMessage"
+          v-model="inputData"
+        >
+      </div>
+    </template>
+
+    <script>
+    export default {
+      name: 'App',
+      data() {
+        return {
+          inputData: null,
         }
       },
-      // actions의 첫번째 인자는 context(store의 전반적인 속성을 모두 가지고 있으므로 context.state와 context.getters를 통해 mutations를 호출하는 것이 모두 가능)
-      // actions에서 state를 직접 조작하는 것은 삼가야 함
-      // actions의 두번째 인자는 payload(넘겨준 데이터를 받아서 사용)
-    ```
+      components: {
+      },
+      computed: {
+        message() {
+          return this.$store.state.message
+        }
+      },
+      methods: {
+        changeMessage() {
+          const newMessage = this.inputData
+          // this.$store.dispatch('액션 메서드 이름', 추가데이터)
+          this.$store.dispatch('changeMessage', newMessage)
+        }
+
+      }
+    }
+    </script>
+
+  #index.js
+    actions: {
+      changeMessage(context, newMessage) {
+        console.log(context)
+        console.log(newMessage)
+      }
+    },
+    // actions의 첫번째 인자는 context(store의 전반적인 속성을 모두 가지고 있으므로 context.state와 context.getters를 통해 mutations를 호출하는 것이 모두 가능)
+    // actions에서 state를 직접 조작하는 것은 삼가야 함
+    // actions의 두번째 인자는 payload(넘겨준 데이터를 받아서 사용)
+  ```
+
   - +) Mutations & Actions
     - vue component의 methods 역할이 vuex에서는 아래와 같이 분화됨
     - Mutations: state를 변경
     - Actions: state 변경을 제외한 나머지 로직
+
   4. Getters
-    - vue 인스턴스의 computed에 해당
-    - state를 활용하여 계산된 값을 얻고자 할 때 사용, state의 원본 데이터를 건들지 않고 계산된 값을 얻을 수 있음
-    - computed와 마찬가지로 getters의 결과는 캐시(cache) 되며, 종속된 값이 변경된 경우에만 재계산됨
-    - getters에서 계산된 값은 state에 영향을 미치지 않음
-    - 첫번째 인자로 state, 두번째 인자로 getter를 받음
-    ```
-    [실습4] - state 길이 재는 문구 작성하기
-    #index.js
-      getters: {
-        messageLength(state) {
-          return state.message.length
-        }
-      // 첫번쨰 인자는 state, 두번쨰 인자는 getters
-      // messageLength를 이용해서 새로운 값을 계산
-        doubleLength(state, getters) {
-          return getters.messageLength * 2
-        },
-      },
 
-    #App.vue
-      <h2>입력된 문자의 길이는 {{ messageLength }}</h2>
-      <h3>문자 길이 2배 {{doubleLength}} </h3>
+  - vue 인스턴스의 computed에 해당
+  - state를 활용하여 계산된 값을 얻고자 할 때 사용, state의 원본 데이터를 건들지 않고 계산된 값을 얻을 수 있음
+  - computed와 마찬가지로 getters의 결과는 캐시(cache) 되며, 종속된 값이 변경된 경우에만 재계산됨
+  - getters에서 계산된 값은 state에 영향을 미치지 않음
+  - 첫번째 인자로 state, 두번째 인자로 getter를 받음
 
-      computed: {
-        message() {
-          return this.$store.state.message
-        },
-        messageLength() {
-          return this.$store.getters.messageLength
-        },
-        doubleLength() {
-          return this.$store.getters.doubleLength
-        }
+  ```
+  [실습4] - state 길이 재는 문구 작성하기
+  #index.js
+    getters: {
+      messageLength(state) {
+        return state.message.length
+      }
+    // 첫번쨰 인자는 state, 두번쨰 인자는 getters
+    // messageLength를 이용해서 새로운 값을 계산
+      doubleLength(state, getters) {
+        return getters.messageLength * 2
       },
-    ```
+    },
+
+  #App.vue
+    <h2>입력된 문자의 길이는 {{ messageLength }}</h2>
+    <h3>문자 길이 2배 {{doubleLength}} </h3>
+
+    computed: {
+      message() {
+        return this.$store.state.message
+      },
+      messageLength() {
+        return this.$store.getters.messageLength
+      },
+      doubleLength() {
+        return this.$store.getters.doubleLength
+      }
+    },
+  ```
+
   ```
   [정리]
   state : 중앙에서 관리하는 모든 상태 정보
@@ -200,7 +217,9 @@
   ```
 
 ### Lifecycle Hooks
+
 - Lifecycle Hooks
+
   - 각 Vue 인스턴스는 생성과 소멸의 과정 중 단계별 초기화 과정을 거침
     - Vue 인스턴스가 생성된 경우, 인스턴스를 DOM에 마운트하는 경우, 데이터가 변경되어 DOM을 업데이트하는 경우 등
   - 각 단계가 트리거가 되어 특정 로직을 실행할 수 있음
@@ -223,8 +242,11 @@
 - updated
   - 데이터가 변경되어 DOM에 변화를 줄 때 호출됨
 
+[Vue_1107_day3_DogAPI 폴더]
+
 ### Todo with Vuex
 
+[Vue_1107_day3_TodoList 폴더]
 
 - Local Storage (브라우저의 Local Storage에 todo 데이터를 저장하여 데이터 보존하기)
   - Window.localStorage
@@ -234,5 +256,3 @@
     - 관련 메서드
       - setItem(key, value) - key, value 형태로 데이터 저장
       - getItem(key) - key에 해당하는 데이터 조회
-
-      
