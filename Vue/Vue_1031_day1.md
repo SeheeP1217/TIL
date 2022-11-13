@@ -176,27 +176,6 @@
   - v-html directive을 사용하여 data와 바인딩
   - directive-HTML 기반 template syntax
   - HTML의 기본 속성이 아닌 Vue가 제공하는 특수 속성의 값으로 data를 작성
-```html
-<body>
-  <!-- 1. Text interpolation -->
-  <div id="app">
-    <p>메시지: {{ msg }}</p>   
-    <p>HTML 메시지 : {{ rawHTML }}</p>
-    <p>HTML 메시지 : <span v-html="rawHTML"></span></p> // 문자열로 쓰여진 style 태그 사용하기
-    <p>{{ msg.split('').reverse().join('') }}</p>       // 자바스크립트의 완성된 표현식도 통으로 넣을 수 있다.
-  </div>
-  <script>
-  // 1. Text interpolation
-  const app = new Vue({
-    el: '#app',
-    data: {
-      msg: 'Text interpolation',
-      rawHTML: '<span style="color:red"> 빨간 글씨</span>'
-    }
-  })
-  </script>
-</body>
-```
 
 <hr>
 
@@ -208,6 +187,27 @@
   - v-on:submit.prevent="onSubmit"
     - ':'을 통해 전달 인자를 받을 수 있음
     - '.'으로 표시되는 특수 접미사 - directive를 특별한 방법으로 바인딩 해야함
+    ```html
+    <body>
+      <!-- 1. Text interpolation -->
+      <div id="app">
+        <p>메시지: {{ msg }}</p>   
+        <p>HTML 메시지 : {{ rawHTML }}</p>
+        <p>HTML 메시지 : <span v-html="rawHTML"></span></p> // 문자열로 쓰여진 style 태그 사용하기
+        <p>{{ msg.split('').reverse().join('') }}</p>       // 자바스크립트의 완성된 표현식도 통으로 넣을 수 있다.
+      </div>
+      <script>
+      // 1. Text interpolation
+      const app = new Vue({
+        el: '#app',
+        data: {
+          msg: 'Text interpolation',
+          rawHTML: '<span style="color:red"> 빨간 글씨</span>'
+        }
+      })
+      </script>
+    </body>
+    ```
   - v-text
     - Template Interpolation과 함께 가장 기본적인 바인딩 방법
     - {{ }}와 동일한 역할

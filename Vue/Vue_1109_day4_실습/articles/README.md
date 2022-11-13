@@ -50,7 +50,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
   // 3.5 created lifecycle hook을 통해 인스턴스가 생성되었을 때 article을 가져오는 함수 호출
   // 3.6 글 작성시간을 로컬 시간으로 변환 (자정과의 시간 차이를 밀리초로 나타내는 정수 값인 상태)
   // 3.7 DetailView 컴포넌트에서 뒤로가기 링크 추가
- // 3.8 각 게시글을 클릭하면 detail 페이지로 이동하도록 ArticleItem에 이벤트 추가 (v-on 이벤트 핸들러에도 인자 전달 가능)
+  // 3.8 각 게시글을 클릭하면 detail 페이지로 이동하도록 ArticleItem에 이벤트 추가 (v-on 이벤트 핸들러에도 인자 전달 가능)
 
 4. Delete 구현
   // 4.1 DetailView 컴포넌트에 삭제 버튼을 만들고, mutations를 호출
@@ -60,4 +60,4 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 5. 404 Not Found 구현
   // 5.1 NotFound404 컴포넌트 및 라우터 작성 (Detail에 대한 route보다 먼저 등록해줘야함, /404로 등록 시 404번째 게시글과 혼동할 수 있음)
   // 5.2 DetailView 컴포넌트에 id에 대항하는 article이 없으면 404 페이지로 이동
- // 5.3 요청한 리소스가 존재하지 않는 경우 없는 id가 아닌 전혀 다른 요청에도 대비하여 404 page로 redirect 시키기
+  // 5.3 요청한 리소스가 존재하지 않는 경우 없는 id가 아닌 전혀 다른 요청에도 대비하여 404 page로 redirect 시키기
