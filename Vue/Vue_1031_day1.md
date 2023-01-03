@@ -69,6 +69,7 @@
 ```
 
 <hr>
+
 ### Vue instance
 - MVVM Pattern
   - 소프트웨어 아키텍처 패턴의 일종
