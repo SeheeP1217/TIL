@@ -1,14 +1,12 @@
-N, M = map(int, input().split())
-lst = list(map(int, input().split()))
+import sys
+input = sys.stdin.readline
 
-ans = []
-for _ in range(M):
-    s, e = map(int, input().split())
+n,m=map(int,input().split())
+arr=list(map(int,input().split()))
 
-    sm = 0
-    for i in range(s-1, e):
-        sm += lst[i]
-
-    ans.append(sm)
-for j in range(len(ans)):
-    print(ans[j])
+dp=[0]*(n+1)
+for k in range(1,n+1):
+    dp[k]=dp[k-1]+arr[k-1]
+for _ in range(m):
+    i,j=map(int,input().split())
+    print(dp[j]-dp[i-1])
