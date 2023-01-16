@@ -137,3 +137,26 @@
 - 내비게이션 바 추가하기 
   - components 폴더 안에 layout 폴더를 생성해서 component 추가
   - 라우터를 통해 페이지에 로딩되는 것이 아니기 때문
+  - 다른 코드들 안에 삽입될 것
+  - Link
+    - <a href="">태그를 사용하면 이동은 가능하지만 브라우저가 서버로 request를 한다.
+    - 이를 방지하기 위한 것이 {LINK} 컴포넌트
+    - react-router-dom이 클릭 리스너를 추가함
+  ```js
+  import {Link} from 'react-router-dom'
+
+  function MainNavigation() {
+    return <header>
+      <div>React Meetups</div>
+      <nav>
+        <ul>
+          <li>
+            <Link>Some Link</Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
+  }
+
+  export default MainNavigation
+  ```
