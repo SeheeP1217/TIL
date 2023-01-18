@@ -142,6 +142,7 @@
     - <a href="">태그를 사용하면 이동은 가능하지만 브라우저가 서버로 request를 한다.
     - 이를 방지하기 위한 것이 {LINK} 컴포넌트
     - react-router-dom이 클릭 리스너를 추가함
+    - 추가 request 없이 페이지에 로드할 수 있음
   ```js
   import {Link} from 'react-router-dom'
 
@@ -151,7 +152,14 @@
       <nav>
         <ul>
           <li>
-            <Link>Some Link</Link>
+            <!-- Link에 이동할 경로를 설정하려면 to prop 추가 -->
+            <Link to='/'>All Meetups</Link>
+          </li>
+          <li>
+            <Link to='/new-meetup'>Add New Meetup</Link>
+          </li>
+          <li>
+            <Link to='/favorites'>My Favorites</Link>
           </li>
         </ul>
       </nav>
@@ -160,3 +168,9 @@
 
   export default MainNavigation
   ```
+
+- css 모듈로 스타일링 하기
+  - css 모듈 : 스타일을 컴포넌트에 한정하는 기능
+  - css 파일 이름을 ****.module.css 로 설정해야함 (ex. MainNavigation.module.css)
+  - .js 파일에서 .css 파일을 import 하면 빌드 프로세스가 알아서 css 코드를 로딩되는 페이지에 추가해 줌
+  ex. import classes from './MainNavigation.module.css';
