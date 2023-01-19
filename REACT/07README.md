@@ -174,3 +174,36 @@
   - css 파일 이름을 ****.module.css 로 설정해야함 (ex. MainNavigation.module.css)
   - .js 파일에서 .css 파일을 import 하면 빌드 프로세스가 알아서 css 코드를 로딩되는 페이지에 추가해 줌
   ex. import classes from './MainNavigation.module.css';
+
+- 데이터 목록 출력하기
+  ```javascript
+  const DUMMY_DATA = [
+    {
+      id: "m1",
+      title: "This is a first meetup",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg",
+      address: "Meetupstreet 5, 12345 Meetup City",
+      description:
+        "This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!",
+    },
+    {
+      id: "m2",
+      title: "This is a second meetup",
+      image:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d3/Stadtbild_M%C3%BCnchen.jpg/2560px-Stadtbild_M%C3%BCnchen.jpg",
+      address: "Meetupstreet 5, 12345 Meetup City",
+      description:
+        "This is a first, amazing meetup which you definitely should not miss. It will be a lot of fun!",
+    },
+  ]
+
+  <ul>
+    {DUMMY_DATA.map((meetup) => {
+      return <li key={meetup.id}>{meetup.title}</li>
+    })}
+  </ul>
+  ```
+  - .map인 자바스크립트 문법을 사용해서 DUMMY_DATA의 각 항목을 리스트로 각각 가져올 수 있다.
+  - 리액트의 특성 상 리스트를 효과적으로 업데이트하고 렌더링 하기 위해서 key값(meetup.id)을 지정해줘야한다. 
+
