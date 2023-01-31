@@ -14,9 +14,11 @@ function NewMeetupPage() {
         headers: {
           "Content-Type": "application/json",
         },
-      }.then(() => {
+      }).then(() => {
+				// history.push()를 사용하면 스택을 쌓는거라 이전 페이지로 돌아가기 가능
+				// 양식이 제출되는 경우는 의미가 없으므로 replace가 적당
 				history.replace('/');
-			})
+			}
     )
   }
 
