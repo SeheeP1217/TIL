@@ -1,19 +1,20 @@
-K, N = map(int, input().split())
+K, N= map(int, input().split())
+
 lst = []
-for _ in range(K):
-    lst.append(int(input()))
+sm = 0
+for i in range(K):
+    num = int(input())
+    lst.append(num)
+    sm += num
 
-#이진탐색
-start = 1
-end = max(lst)
+mx_length = sm // N
 
-while (start <= end):
-    mid = (start + end) // 2
+while mx_length > 0:
     cnt = 0
-    for i in range(K):
-        cnt += lst[i] // mid
-    if cnt >= N:
-        start = mid + 1
+    for i in lst:
+        cnt += i // mx_length
+    if cnt < N:
+        mx_length -= 1
     else:
-        end = mid - 1
-print(end)                  #최대길이이므로 end 출력
+        print(mx_length)
+        break
