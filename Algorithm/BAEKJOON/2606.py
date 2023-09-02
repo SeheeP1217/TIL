@@ -14,9 +14,10 @@ import sys
 
 def dfs(k):
     visited[k] = 1
-    for i in graph[k]:
-        if visited[i]==0:
-            dfs(i)
+    for j in graph[k]:
+        if visited[j]==0:
+            dfs(j)
+
 
 # 첫번째 입력값 - 컴퓨터의 수
 n = int(sys.stdin.readline())
