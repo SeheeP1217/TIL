@@ -25,9 +25,9 @@ visited=[0]*(n+1)
 result = []
 
 for i in range(k):
-  a, b = map(int, sys.stdin.readline().split())
-  graph[a]+=[b]
-  graph[b]+=[a]
+    a, b = map(int, sys.stdin.readline().split())
+    graph[a]+=[b]
+    graph[b]+=[a]
 
 dfs(s, 0)
 if len(result) == 0:

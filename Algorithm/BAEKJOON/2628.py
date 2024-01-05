@@ -1,6 +1,8 @@
-V, H = map(int, input().split())
+import sys
+
+V, H = map(int, sys.stdin.readline().split())
 N = int(input())
-cut = [list(map(int, input().split())) for _ in range(N)]
+cut = [list(map(int, sys.stdin.readline().split())) for _ in range(N)]
 
 # 가로세로 구분
 lst_h = []

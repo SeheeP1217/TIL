@@ -1,3 +1,7 @@
+
+
+
+
 def section(x, y, n):
     check = arr[x][y]
     for i in range(x, x+n):

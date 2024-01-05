@@ -1,9 +1,11 @@
+import sys
+
 N = int(input())
-lst = list(map(int, input().split()))
+lst = list(map(int, sys.stdin.readline().split()))
 
 p = int(input())
 for _ in range(p):
-    s, c = map(int, input().split())
+    s, c = map(int, sys.stdin.readline().split())
 
 
     if s == 1:
